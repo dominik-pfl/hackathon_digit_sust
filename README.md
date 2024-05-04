@@ -8,7 +8,6 @@ The total kwH optimized are displayed in the GUI, this number refers to the amou
 ## Project contributors
 
 - dominik-pfl (https://github.com/dominik-pfl)
-- Cyclone-92 (https://github.com/Cyclone-92)
 - JasminF (https://github.com/40412)
 
 ## Modules and Scripts
