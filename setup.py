@@ -1,6 +1,17 @@
 import requests
 
 def setup(value):
+    """
+    Registers a new building for a given team by sending a POST request to a specified URL with the team name.
+    If the request is successful, it prints and returns the building's unique ID and acknowledges the creation.
+    If the request fails, it prints the failure status.
+
+    Parameters:
+        value (str): The name of the team for which a new building is being registered.
+
+    Returns:
+        int: The unique identifier for the new building if the request is successful. Otherwise, returns None.
+    """
     url = 'https://hackathon.kvanttori.fi/buildings/create'
     data = {'team_name': value}
     response = requests.post(url, json=data)
