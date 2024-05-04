@@ -6,6 +6,13 @@ import setup as set
 import optimization as opt
 
 def main():
+    """
+        Main function to set up and run the tkinter GUI for the energy management system. This function initializes
+        the GUI, prompts for user input, and updates the display with the latest energy optimization data.
+
+        The GUI prompts for a team name, sets up labels to display energy optimization data, and runs a background
+        thread that updates the GUI periodically with the latest data from the optimization functions.
+        """
     # Setup the main GUI window
     root = tk.Tk()
     root.title("Energy Management System Display")
@@ -29,12 +36,21 @@ def main():
 
     # Function to update the GUI with new data
     def update_gui(id):
+        """
+        Function running in a separate thread that continuously updates the GUI with the latest
+        total kWh covered as optimized by the energy management system. This function fetches updates
+        every 2 seconds.
+
+        Parameters:
+            id (int): The unique identifier for the building obtained from the setup process.
+        """
         while True:
+            time.sleep(2)  # Delay to mimic your existing sleep
             opt.adjust_energy_allocations(id)
             # Update the GUI from the optimization results
             total_kwh_label.config(text=f"{opt.total_kwH_covered}")
             root.update_idletasks()  # Update GUI elements
-            time.sleep(2)  # Delay to mimic your existing sleep
+
 
     # Start the energy management routine in a separate thread
     thread = threading.Thread(target=update_gui, args=(id,))
